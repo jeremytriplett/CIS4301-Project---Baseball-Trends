@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using CIS4301_Project___Baseball_Trends.DBAccess;
 using CIS4301_Project___Baseball_Trends.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace CIS4301_Project___Baseball_Trends.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
@@ -17,8 +16,10 @@ namespace CIS4301_Project___Baseball_Trends.Controllers
         [HttpGet]
         public List<PitcherModel> Get()
         {
-            System.Diagnostics.Debug.WriteLine("Hello!");
-            return DBLayer.GetRecentPitchers();
+            List<PitcherModel> ret = DBLayer.GetRecentPitchers();
+
+            return ret;
+
         }
 
         // POST api/<controller>

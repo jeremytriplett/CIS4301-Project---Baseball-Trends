@@ -29,7 +29,7 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                 "FROM" +
                 "   baseball_pitching " +
                 "WHERE" +
-                "   yearid = :mostRecentYear ";
+                "   yearid = :mostRecentYear";
 
             OracleCommand cmd = new OracleCommand(sql, conn);
             cmd.Parameters.Add(new OracleParameter("mostRecentYear", 2020));
