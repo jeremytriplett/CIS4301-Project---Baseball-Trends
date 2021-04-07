@@ -5,31 +5,31 @@ export class FetchData extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { pitchers: [], loading: true };
+    this.state = { forecasts: [], loading: true };
   }
 
   componentDidMount() {
-    this.populatePitcherData();
+    this.populateWeatherData();
   }
 
-  static renderPitchersTable(pitchers) {
+  static renderForecastsTable(forecasts) {
     return (
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
           <tr>
-            <th>playerID</th>
-            <th>stint</th>
-            <th>yearId</th>
-            <th>wins</th>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
           </tr>
         </thead>
             <tbody>
-          {pitchers.map(pitchers =>
-            <tr key={pitchers.playerId}>
-              <td>{pitchers.stint}</td>
-              <td>{pitchers.yearId}</td>
-              <td>{pitchers.wins}</td>
-              <td>{pitchers.losses}</td>
+          {forecasts.map(forecast =>
+            <tr key={forecast.playerId}>
+              <td>{forecast.stint}</td>
+              <td>{forecast.yearId}</td>
+              <td>{forecast.wins}</td>
+              <td>{forecast.losses}</td>
             </tr>
           )}
         </tbody>
@@ -40,20 +40,20 @@ export class FetchData extends Component {
   render() {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderPitchersTable(this.state.pitchers);
+      : FetchData.renderForecastsTable(this.state.forecasts);
 
     return (
       <div>
-        <h1 id="tabelLabel" >Pitchers</h1>
+        <h1 id="tabelLabel" >Weather forecast</h1>
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
       </div>
     );
   }
 
-  async populatePitcherData() {
+  async populateWeatherData() {
     const response = await fetch('api/values');
     const data = await response.json();
-    this.setState({ pitchers: data, loading: false });
+    this.setState({ forecasts: data, loading: false });
   }
 }

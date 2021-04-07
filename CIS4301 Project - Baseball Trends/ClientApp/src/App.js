@@ -6,17 +6,21 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 
 import './custom.css'
+import { SampleGraph } from './components/SampleGraph';
 
 export default class App extends Component {
   static displayName = App.name;
 
   render () {
     return (
-      <Layout>
+        <Layout>
         <Route exact path='/' component={Home} />
+        <Route exact path='/' component={SampleGraph}/>
         <Route path='/counter' component={Counter} />
         <Route path='/fetch-data' component={FetchData} />
-      </Layout>
+            
+        </Layout>
+            
     );
   }
 }
