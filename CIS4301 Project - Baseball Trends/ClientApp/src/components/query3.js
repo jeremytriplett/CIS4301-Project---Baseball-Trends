@@ -15,7 +15,7 @@ const state = {
         }
     ]
 }
-export class SampleGraph extends Component {
+export class Query3 extends Component {
 
  
 
