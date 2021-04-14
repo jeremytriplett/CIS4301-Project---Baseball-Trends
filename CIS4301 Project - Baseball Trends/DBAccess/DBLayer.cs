@@ -11,7 +11,7 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
     {
         public static List<PitcherModel> GetRecentPitchers()
         {
-            string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(CONNECT_DATA = (SERVICE_NAME = orcl.home))); User Id = system; Password = password; ";
+            string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = ; Password = ; ";
 
             OracleConnection conn = new OracleConnection(connStr);
             conn.Open();
