@@ -10,7 +10,7 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
     public class DBLayer
     {
 
-        public static string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = username; Password = password; ";
+        public static string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = rporter; Password = goGators; ";
 
         public static List<Query1Tuple> GetQuery1(int dateFrom, int dateTo)
         {
