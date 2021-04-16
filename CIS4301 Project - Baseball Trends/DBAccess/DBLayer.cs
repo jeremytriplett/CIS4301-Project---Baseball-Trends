@@ -83,7 +83,7 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                     FROM 
                         triplett.baseball_managers 
                     GROUP BY 
-                        baseball_managers.yearid) a
+                        triplett.baseball_managers.yearid) a
                 INNER JOIN 
                     (SELECT
                         yearid, count(*) as player_managers_count 
@@ -91,17 +91,17 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                         triplett.baseball_managers 
                     INNER JOIN 
                         (SELECT DISTINCT 
-                            baseball_managers.playerid AS player_manager 
+                            triplett.baseball_managers.playerid AS player_manager 
                         FROM 
                             triplett.baseball_managers 
                         INNER JOIN 
-                            baseball_appearances 
+                            triplett.baseball_appearances 
                         ON 
-                        baseball_managers.playerid = baseball_appearances.playerid) c 
+                        triplett.baseball_managers.playerid = triplett.baseball_appearances.playerid) c 
                     ON 
-                        c.player_manager = baseball_managers.playerid 
+                        c.player_manager = triplett.baseball_managers.playerid 
                     GROUP BY 
-                        baseball_managers. yearid) b 
+                       triplett.baseball_managers.yearid) b 
                 ON
                     a.yearid = b.yearid
                 WHERE
@@ -129,7 +129,6 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
             }
 
             return ret;
-
 
         }
 
