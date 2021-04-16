@@ -25,14 +25,14 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                     (SELECT
                         yearid, TRUNC(AVG(attendance), 2) as avg_attendance_league
                     FROM
-                        baseball_teams 
+                        triplett.baseball_teams 
                     GROUP BY
                         yearid) a
                 INNER JOIN
                     (SELECT 
                         yearid, attendance as attendance_ws_champs
                     FROM
-                        baseball_teams
+                        triplett.baseball_teams
                     WHERE
                         wswin = 'Y'
                     ) b       
@@ -81,19 +81,19 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                     (SELECT 
                         yearid, count(*) as total_managers_count 
                     FROM 
-                        baseball_managers 
+                        triplett.baseball_managers 
                     GROUP BY 
                         baseball_managers.yearid) a
                 INNER JOIN 
                     (SELECT
                         yearid, count(*) as player_managers_count 
                     FROM 
-                        baseball_managers 
+                        triplett.baseball_managers 
                     INNER JOIN 
                         (SELECT DISTINCT 
                             baseball_managers.playerid AS player_manager 
                         FROM 
-                            baseball_managers 
+                            triplett.baseball_managers 
                         INNER JOIN 
                             baseball_appearances 
                         ON 
