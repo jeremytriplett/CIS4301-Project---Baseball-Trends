@@ -9,55 +9,129 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
 {
     public class DBLayer
     {
-        public static List<PitcherModel> GetRecentPitchers()
-        {
-            string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = ; Password = ; ";
 
+        public static string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = username; Password = password; ";
+
+        public static List<Query1Tuple> GetQuery1(int dateFrom, int dateTo)
+        {
             OracleConnection conn = new OracleConnection(connStr);
             conn.Open();
 
             string sql =
-                "SELECT " +
-                "   playerid," +
-                "   yearid," +
-                "   stint," +
-                "   teamid," +
-                "   w," +
-                "   l," +
-                "   ipouts," +
-                "   era " +
-                "FROM" +
-                "   baseball_pitching " +
-                "WHERE" +
-                "   yearid = :mostRecentYear";
+               @"
+                SELECT 
+                    a.yearid, a.avg_attendance_league, b.attendance_ws_champs
+                FROM
+                    (SELECT
+                        yearid, TRUNC(AVG(attendance), 2) as avg_attendance_league
+                    FROM
+                        baseball_teams 
+                    GROUP BY
+                        yearid) a
+                INNER JOIN
+                    (SELECT 
+                        yearid, attendance as attendance_ws_champs
+                    FROM
+                        baseball_teams
+                    WHERE
+                        wswin = 'Y'
+                    ) b       
+                ON
+                    a.yearid = b.yearid
+                WHERE
+                    a.yearid BETWEEN :dateFrom AND :dateTo
+                ORDER BY 
+                    a.yearid asc";
 
             OracleCommand cmd = new OracleCommand(sql, conn);
-            cmd.Parameters.Add(new OracleParameter("mostRecentYear", 2020));
+            cmd.Parameters.Add(new OracleParameter("dateFrom", dateFrom));
+            cmd.Parameters.Add(new OracleParameter("dateTo", dateTo));
+
 
             OracleDataReader oraReader = cmd.ExecuteReader();
 
-            List<PitcherModel> ret = new List<PitcherModel>();
+            List<Query1Tuple> ret = new List<Query1Tuple>();
 
             while (oraReader.Read())
             {
-                PitcherModel pitcher = new PitcherModel();
+                Query1Tuple tuple = new Query1Tuple();
 
-                pitcher.playerId = Convert.ToString(oraReader["playerid"]);
-                pitcher.yearId = Convert.ToString(oraReader["yearId"]);
-                pitcher.stint = Convert.ToInt32(oraReader["stint"]);
-                pitcher.teamId = Convert.ToString(oraReader["teamId"]);
-                pitcher.wins = Convert.ToInt32(oraReader["w"]);
-                pitcher.losses = Convert.ToInt32(oraReader["l"]);
-                pitcher.ipOuts = Convert.ToInt32(oraReader["ipOuts"]);
-                pitcher.era = Convert.ToDouble(oraReader["era"]);
+                tuple.yearId = Convert.ToString(oraReader["yearid"]);
+                tuple.avgAttendanceLeague = Convert.ToInt32(oraReader["avg_attendance_league"]);
+                tuple.attendanceWsChamps = Convert.ToInt32(oraReader["attendance_ws_champs"]);
 
-                ret.Add(pitcher);
+                ret.Add(tuple);
             }
-
 
             return ret;
 
 
         }
+
+        public static List<Query2Tuple> GetQuery2(int dateFrom, int dateTo)
+        {
+            OracleConnection conn = new OracleConnection(connStr);
+            conn.Open();
+
+            string sql =
+               @"
+                SELECT
+                    a.yearid, TRUNC(((b.player_managers_count/a.total_managers_count)*100),2) AS player_manager_percentage
+                FROM 
+                    (SELECT 
+                        yearid, count(*) as total_managers_count 
+                    FROM 
+                        baseball_managers 
+                    GROUP BY 
+                        baseball_managers.yearid) a
+                INNER JOIN 
+                    (SELECT
+                        yearid, count(*) as player_managers_count 
+                    FROM 
+                        baseball_managers 
+                    INNER JOIN 
+                        (SELECT DISTINCT 
+                            baseball_managers.playerid AS player_manager 
+                        FROM 
+                            baseball_managers 
+                        INNER JOIN 
+                            baseball_appearances 
+                        ON 
+                        baseball_managers.playerid = baseball_appearances.playerid) c 
+                    ON 
+                        c.player_manager = baseball_managers.playerid 
+                    GROUP BY 
+                        baseball_managers. yearid) b 
+                ON
+                    a.yearid = b.yearid
+                WHERE
+                    a.yearid BETWEEN :dateFrom AND :dateTo
+                ORDER BY
+                    yearid ASC";
+
+            OracleCommand cmd = new OracleCommand(sql, conn);
+            cmd.Parameters.Add(new OracleParameter("dateFrom", dateFrom));
+            cmd.Parameters.Add(new OracleParameter("dateTo", dateTo));
+
+
+            OracleDataReader oraReader = cmd.ExecuteReader();
+
+            List<Query2Tuple> ret = new List<Query2Tuple>();
+
+            while (oraReader.Read())
+            {
+                Query2Tuple tuple = new Query2Tuple();
+
+                tuple.yearId = Convert.ToString(oraReader["yearid"]);
+                tuple.playerManagerPercentage = Convert.ToDouble(oraReader["player_manager_percentage"]);
+
+                ret.Add(tuple);
+            }
+
+            return ret;
+
+
+        }
+
     }
 }

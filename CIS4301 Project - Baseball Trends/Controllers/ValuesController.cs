@@ -12,22 +12,39 @@ namespace CIS4301_Project___Baseball_Trends.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        // GET: api/<controller>
-        [HttpGet]
-        public List<PitcherModel> Get()
+        [HttpGet("query1")]
+        public List<Query1Tuple> Query1(int dateFrom, int dateTo)
         {
-            List<PitcherModel> ret = DBLayer.GetRecentPitchers();
+            List<Query1Tuple> ret = DBLayer.GetQuery1(dateFrom, dateTo);
 
             return ret;
-
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void PostTest([FromBody]string value)
+        [HttpGet("query2")]
+        public List<Query2Tuple> Query2(int dateFrom, int dateTo)
         {
+            List<Query2Tuple> ret = DBLayer.GetQuery2(dateFrom, dateTo);
+
+            return ret;
         }
 
+        [HttpGet("query3")]
+        public List<PitcherModel> Query3(int dateFrom, int dateTo)
+        {
+            return null;
+        }
+
+        [HttpGet("query4")]
+        public List<PitcherModel> Query4(int dateFrom, int dateTo)
+        {
+            return null;
+        }
+
+        [HttpGet("query5")]
+        public List<PitcherModel> Query5(int dateFrom, int dateTo)
+        {
+            return null;
+        }
        
     }
 }

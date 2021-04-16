@@ -17,19 +17,14 @@ export class FetchData extends Component {
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
           <tr>
-            <th>playerID</th>
-            <th>stint</th>
-            <th>yearId</th>
-            <th>wins</th>
+            <th>Year</th>
+            <th>Player Manager Percentage</th>
           </tr>
         </thead>
             <tbody>
           {pitchers.map(pitchers =>
-            <tr key={pitchers.playerId}>
-              <td>{pitchers.stint}</td>
-              <td>{pitchers.yearId}</td>
-              <td>{pitchers.wins}</td>
-              <td>{pitchers.losses}</td>
+            <tr key={pitchers.yearId}>
+                  <td>{pitchers.playerManagerPercentage}</td>
             </tr>
           )}
         </tbody>
@@ -52,7 +47,7 @@ export class FetchData extends Component {
   }
 
   async populatePitcherData() {
-    const response = await fetch('api/values');
+      const response = await fetch('api/values/Query2?dateFrom=1920&dateTo=2010');
     const data = await response.json();
     this.setState({ pitchers: data, loading: false });
   }
