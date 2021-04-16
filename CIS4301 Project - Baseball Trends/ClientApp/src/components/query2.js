@@ -5,31 +5,26 @@ export class FetchData extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { pitchers: [], loading: true };
   }
 
   componentDidMount() {
-    this.populateWeatherData();
+    this.populatePitcherData();
   }
 
-  static renderForecastsTable(forecasts) {
+  static renderPitchersTable(pitchers) {
     return (
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Year</th>
+            <th>Player Manager Percentage</th>
           </tr>
         </thead>
             <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.playerId}>
-              <td>{forecast.stint}</td>
-              <td>{forecast.yearId}</td>
-              <td>{forecast.wins}</td>
-              <td>{forecast.losses}</td>
+          {pitchers.map(pitchers =>
+            <tr key={pitchers.yearId}>
+                  <td>{pitchers.playerManagerPercentage}</td>
             </tr>
           )}
         </tbody>
@@ -40,20 +35,20 @@ export class FetchData extends Component {
   render() {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+      : FetchData.renderPitchersTable(this.state.pitchers);
 
     return (
       <div>
-        <h1 id="tabelLabel" >Weather forecast</h1>
+        <h1 id="tabelLabel" >Pitchers</h1>
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
       </div>
     );
   }
 
-  async populateWeatherData() {
-    const response = await fetch('api/values');
+  async populatePitcherData() {
+      const response = await fetch('api/values/Query2?dateFrom=1920&dateTo=2010');
     const data = await response.json();
-    this.setState({ forecasts: data, loading: false });
+    this.setState({ pitchers: data, loading: false });
   }
 }

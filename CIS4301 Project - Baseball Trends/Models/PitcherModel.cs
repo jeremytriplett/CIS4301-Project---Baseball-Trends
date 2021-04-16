@@ -7,13 +7,13 @@ namespace CIS4301_Project___Baseball_Trends.Models
 {
     public class PitcherModel
     {
-        public string playerId;
-        public string yearId;
-        public int stint;
-        public string teamId;
-        public int wins;
-        public int losses;
-        public int ipOuts;
-        public double era;
+        public string playerId { get; set; }
+        public string yearId { get; set; }
+        public int stint { get; set; }
+        public string teamId { get; set; }
+        public int wins { get; set; }
+        public int losses { get; set; }
+        public int ipOuts { get; set; }
+        public double era { get; set; }
     }
 }
