@@ -1,0 +1,64 @@
+[33mcommit 77ae0f7a58415fb1f42e6cc3bffac3e6fc60047c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Fri Apr 16 17:17:41 2021 -0400
+
+[33mcommit 99a00427db77cae7cec8fa7dbaca8731c1ce60d5[m
+Merge: 6cbb8f9 d476282
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Fri Apr 16 16:59:47 2021 -0400
+
+    Merge branch 'master' of https://github.com/jeremytriplett/CIS4301-Project---Baseball-Trends
+
+[33mcommit 6cbb8f94937978f64dae8ea8952695e8c9b2d58e[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Fri Apr 16 16:59:21 2021 -0400
+
+    Connection fix
+
+[33mcommit aea74ba0814e3d75d3ccf066d23094e595d2cf55[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Fri Apr 16 16:57:38 2021 -0400
+
+    Fixed connections
+
+[33mcommit d476282e920c92c6b8cb649cdce088f71bac19c3[m
+Author: Jeremy Triplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Fri Apr 16 08:09:25 2021 -0400
+
+    Delete query3.js
+
+[33mcommit eacd9f91483efa4839343a612726cfcb7f5e84ea[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Fri Apr 16 08:08:35 2021 -0400
+
+    Data access implementation
+
+[33mcommit 5d1784dc34c01cf1abef0e5cba6fa093560032ce[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Fri Apr 16 08:06:55 2021 -0400
+
+    Data return implemented
+
+[33mcommit 5de8abb6c89997fc35f24f43844ab62e56329130[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Wed Apr 14 02:27:40 2021 -0400
+
+    commit
+
+[33mcommit 2dd63309b2fb8aa1faa403ccd962a3d6c7c90c0d[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Tue Mar 30 08:28:16 2021 -0400
+
+    Updated files to reflect baseball theme
+
+[33mcommit b64619c9ffb8488f2d28d4727c3fb2ef0d6ffbb0[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Tue Mar 30 07:24:36 2021 -0400
+
+    Add project files.
+
+[33mcommit 558822714d1552d129f32a64a945541b622658d6[m
+Author: jeremytriplett <44099343+jeremytriplett@users.noreply.github.com>
+Date:   Tue Mar 30 07:24:34 2021 -0400
+
+    Add .gitignore and .gitattributes.

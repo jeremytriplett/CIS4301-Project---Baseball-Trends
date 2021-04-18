@@ -7,7 +7,8 @@ namespace CIS4301_Project___Baseball_Trends.Models
 {
     public class Query2Tuple
     {
-        public string yearId { get; set; }
-        public double playerManagerPercentage { get; set; }
+        public int yearId { get; set; }
+        public int avgAttendanceLeague { get; set; }
+        public int attendanceWsChamps { get; set; }
     }
 }

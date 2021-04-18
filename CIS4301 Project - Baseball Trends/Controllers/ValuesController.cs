@@ -13,9 +13,9 @@ namespace CIS4301_Project___Baseball_Trends.Controllers
     public class ValuesController : Controller
     {
         [HttpGet("query1")]
-        public List<Query1Tuple> Query1(int dateFrom, int dateTo)
+        public List<Query1Tuple> Query1(int dateFrom, int dateTo, double weight)
         {
-            List<Query1Tuple> ret = DBLayer.GetQuery1(dateFrom, dateTo);
+            List<Query1Tuple> ret = DBLayer.GetQuery1(dateFrom, dateTo, weight);
 
             return ret;
         }
@@ -29,22 +29,28 @@ namespace CIS4301_Project___Baseball_Trends.Controllers
         }
 
         [HttpGet("query3")]
-        public List<PitcherModel> Query3(int dateFrom, int dateTo)
+        public List<Query3Tuple> Query3(int dateFrom, int dateTo, double percentile)
         {
-            return null;
+            List<Query3Tuple> ret = DBLayer.GetQuery3(dateFrom, dateTo, percentile);
+
+            return ret;
         }
 
         [HttpGet("query4")]
-        public List<PitcherModel> Query4(int dateFrom, int dateTo)
+        public List<Query4Tuple> Query4(int dateFrom, int dateTo)
         {
-            return null;
+            List<Query4Tuple> ret = DBLayer.GetQuery4(dateFrom, dateTo);
+
+            return ret;
         }
 
+
         [HttpGet("query5")]
-        public List<PitcherModel> Query5(int dateFrom, int dateTo)
+        public List<Query5Tuple> Query5(int dateFrom, int dateTo)
         {
-            return null;
+            List<Query5Tuple> ret = DBLayer.GetQuery5(dateFrom, dateTo);
+
+            return ret;
         }
-       
     }
 }
