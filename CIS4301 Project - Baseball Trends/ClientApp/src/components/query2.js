@@ -61,7 +61,7 @@ export class FetchData extends Component {
 
     return (
       <div>
-        <h1 id="tabelLabel" >Pitchers</h1>
+        <h2 id="tabelLabel" >Comparing Attendance of World Series Winner to the League Average</h2>
             <form onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.from} onChange={this.handleChangeFrom} id="from"/>
                 <p>-</p>
@@ -74,7 +74,7 @@ export class FetchData extends Component {
   }
 
   async populatePitcherData(from, to) {
-      var str = 'api/values/Query1?dateFrom=';
+      var str = 'api/values/Query2?dateFrom=';
       str = str.concat(from);
       str = str.concat('&dateTo=');
       str = str.concat(to);

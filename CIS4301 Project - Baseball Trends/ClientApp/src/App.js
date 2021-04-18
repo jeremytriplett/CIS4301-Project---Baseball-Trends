@@ -8,6 +8,7 @@ import { Home } from './components/Home';
 import './custom.css'
 import { Query3 } from './components/query3';
 import { FetchData } from './components/query2'
+import {Query1} from './components/query1'
 
 export default class App extends Component {
   static displayName = App.name;
@@ -16,8 +17,8 @@ export default class App extends Component {
     return (
         <Layout>
         <Route exact path='/' component={Home} />
-        <Route path='/query-1' component={FetchData} />
-        <Route path='/query-2' component={Query3} />
+        <Route path='/query-1' component={Query1} />
+        <Route path='/query-2' component={FetchData} />
         <Route path='/query-3' component={Query3} />
         <Route path='/query-4' component={Query3} />
         <Route path='/query-5' component={Query3} />
