@@ -10,7 +10,7 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
     public class DBLayer
     {
 
-        public static string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = user; Password = password; ";
+        public static string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = username; Password = password; ";
 
         public static List<Query1Tuple> GetQuery1(int dateFrom, int dateTo, double weight)
         {
@@ -74,7 +74,11 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                 ret.Add(tuple);
             }
 
+            conn.Close();
+
             return ret;
+
+
 
         }
 
@@ -134,6 +138,8 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
 
                 ret.Add(tuple);
             }
+
+            conn.Close();
 
             return ret;
 
@@ -221,6 +227,8 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                 ret.Add(tuple);
             }
 
+            conn.Close();
+
             return ret;
 
         }
@@ -287,6 +295,8 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
 
                 ret.Add(tuple);
             }
+            conn.Close();
+
 
             return ret;
 
@@ -351,6 +361,9 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
 
                 ret.Add(tuple);
             }
+
+            conn.Close();
+
 
             return ret;
 
