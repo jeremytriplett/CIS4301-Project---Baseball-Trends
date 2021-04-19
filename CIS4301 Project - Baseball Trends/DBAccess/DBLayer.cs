@@ -10,7 +10,7 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
     public class DBLayer
     {
 
-        public static string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = username; Password = password; ";
+        public static string connStr = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521))(CONNECT_DATA = (SID = orcl))); User Id = user; Password = pass; ";
 
         public static List<Query1Tuple> GetQuery1(int dateFrom, int dateTo, double weight)
         {
@@ -369,6 +369,67 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
 
         }
 
+        public static int GetTuplesCount()
+        {
+            int ret = 0;
+
+            OracleConnection conn = new OracleConnection(connStr);
+            conn.Open();
+
+            string sql =
+               @"
+               SELECT
+                    COUNT(*) as ct
+               FROM
+                    triplett.baseball_pitching
+                UNION
+                SELECT
+                    COUNT(*) as ct
+               FROM
+                    triplett.baseball_batting
+                UNION
+                SELECT
+                    COUNT(*) as ct
+               FROM
+                    triplett.baseball_people
+                UNION
+                SELECT
+                    COUNT(*) as ct
+               FROM
+                    triplett.baseball_teams
+                UNION
+                SELECT
+                    COUNT(*) as ct
+               FROM
+                    triplett.baseball_salaries
+                UNION
+                SELECT
+                    COUNT(*) as ct
+               FROM
+                    triplett.baseball_appearances
+                UNION
+                SELECT
+                    COUNT(*) as ct
+               FROM
+                    triplett.baseball_managers
+                ";
+
+            OracleCommand cmd = new OracleCommand(sql, conn);
+
+            OracleDataReader oraReader = cmd.ExecuteReader();
+
+
+            while (oraReader.Read())
+            {
+
+                ret +=  Convert.ToInt32(oraReader["ct"]);
+            }
+
+            conn.Close();
+
+
+            return ret;
+        }
 
         //OLD QUERY 3
         //public static List<Query3Tuple> GetQuery3(int dateFrom, int dateTo)

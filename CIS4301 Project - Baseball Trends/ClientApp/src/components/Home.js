@@ -7,7 +7,7 @@ export class Home extends Component {
     return (
       <div>
         <h1>Welcome to Baseball Trends</h1>
-        <p>Click on any of the pages above to see a graphical representation of an interesting baseball trend</p>
+        <p>Click on any of the pages above to see a graphical representation of an interesting baseball trend</p>z
       </div>
     );
   }

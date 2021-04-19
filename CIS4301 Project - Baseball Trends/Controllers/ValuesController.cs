@@ -52,5 +52,13 @@ namespace CIS4301_Project___Baseball_Trends.Controllers
 
             return ret;
         }
+
+        [HttpGet("tuplescount")]
+        public int GetTuplesCount()
+        {
+            int ret = DBLayer.GetTuplesCount();
+
+            return ret;
+        }
     }
 }
