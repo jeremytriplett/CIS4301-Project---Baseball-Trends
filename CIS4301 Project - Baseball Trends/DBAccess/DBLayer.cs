@@ -74,7 +74,11 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                 ret.Add(tuple);
             }
 
+            conn.Close();
+
             return ret;
+
+
 
         }
 
@@ -134,6 +138,8 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
 
                 ret.Add(tuple);
             }
+
+            conn.Close();
 
             return ret;
 
@@ -221,6 +227,8 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
                 ret.Add(tuple);
             }
 
+            conn.Close();
+
             return ret;
 
         }
@@ -287,6 +295,8 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
 
                 ret.Add(tuple);
             }
+            conn.Close();
+
 
             return ret;
 
@@ -351,6 +361,9 @@ namespace CIS4301_Project___Baseball_Trends.DBAccess
 
                 ret.Add(tuple);
             }
+
+            conn.Close();
+
 
             return ret;
 
