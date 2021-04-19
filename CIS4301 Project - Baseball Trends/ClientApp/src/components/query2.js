@@ -64,7 +64,6 @@ export class FetchData extends Component {
         <h2 id="tabelLabel" >Comparing Attendance of World Series Winner to the League Average</h2>
             <form onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.from} onChange={this.handleChangeFrom} id="from"/>
-                <p>-</p>
                 <input type="text" value={this.state.to} onChange={this.handleChangeTo} id="to" />
                 <input type="submit" value="Submit" />
             </form>
